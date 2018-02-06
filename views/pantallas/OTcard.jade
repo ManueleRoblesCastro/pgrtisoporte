@@ -1,0 +1,54 @@
+div(class=['ui','modal'] id='modalOTcard')
+	i(class=['close', 'icon'])
+	div(class=['floated', 'ten', 'wide', 'column', 'form-OTcard'])
+		button(class=['fluid', 'ui', 'button', 'disabled'])='Detalle de Orden de Trabajo'
+		br
+
+		input(type='hidden' id='id_num_fila')
+		
+		form(class=['ui','form','segment'] method='get' id='form-detailOTm')
+			div(class=['ui', 'four', 'fields'])
+				div(class=['ui','field'])
+					label(for='IdOT')= 'Identificador (ID, Automático)'
+					input(type='text' name='IdOT' placeholder='0' id='id_IdOT' readonly)
+				div(class=['ui','field'])
+					label(for='FechaOT')= 'Fecha Inicial (aaaa/mm/dd)'
+					div(class = ['ui', 'input', 'left', 'icon'])
+						i(class=['calendar','icon'])
+						input(type='text' name='FechaOT' id='id_FechaOT' readonly)
+				div(class=['ui','field'])
+					label(for='Prioridad')= 'Prioridad'
+					input(type='text' name='Prioridad' id='id_Prioridad' readonly)						
+				div(class=['ui','field'])
+					label(for='Peso')= 'Peso'
+					input(type='text' name='Peso' id='id_Peso' readonly)
+					
+			div(class=['ui', 'three', 'fields'])
+				div(class=['ui','field'])
+					label(for='Empleado')= 'Empleado'
+					input(type='text' name='Empleado' id='id_Empleado' readonly)
+				div(class=['ui','field'])
+					label(for='Unidad')= 'Unidad'
+					input(type='text' name='Unidad' id='id_Unidad' readonly)
+				div(class=['ui','field'])
+					label(for='ActivoFijo')= 'Activo Fijo'
+					input(type='text' name='ActivoFijo' id='id_ActivoFijo' readonly)
+					
+			div(class=['ui grid'])
+				div(class=['four wide column'])
+					div(class=['ui vertical fluid tabular menu'] id='estados-tab')
+						a(class=['active item'] data-tab='estadocurso' id='id-curso')='En Curso'
+						a(class='item' data-tab='estadopausa' id='id-pausa')='Pausa'
+						a(class='item' data-tab='estadoreprfecha' id='id-estadoreprfecha')='Repr. Fecha'
+						a(class='item' data-tab='estadofinalizada' id='id-finalizada')='Finalizada'
+				div(class=['twelve wide stretched column'])
+						div(class=['ui', 'bottom', 'attached', 'tab', 'segment'] id='contendorestadocurso' data-tab='estadocurso')
+							p='tabestadocurso'
+						div(class=['ui', 'bottom', 'attached', 'tab', 'segment'] id='contendorestadopausa' data-tab='estadopausa')
+							p='tabestadopausa'					
+
+script(type='text/javascript').
+
+	$('#estados-tab .item').tab(
+		'change tab', 'estadocurso'
+	);
